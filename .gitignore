@@ -1,0 +1,16 @@
+# Secrets
+.env
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Python junk
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter
+.ipynb_checkpoints
