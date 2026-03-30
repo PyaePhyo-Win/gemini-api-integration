@@ -1,0 +1,22 @@
+[
+    {
+        "task": "Write a Python Lambda handler function that stops an EC2 instance specified by an instance ID passed in the event payload. The instance ID should be extracted from the 'instance_id' key in the event.",
+        "type": "python"
+    },
+    {
+        "task": "Generate a CloudFormation JSON resource definition for an S3 bucket named 'my-application-logs' that has public access blocked for all settings (BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, RestrictPublicBuckets).",
+        "type": "json"
+    },
+    {
+        "task": "Provide a regular expression to extract the AWS Account ID (a 12-digit number) from a string like 'arn:aws:iam::123456789012:user/example-user' or 'Account 123456789012 accessed S3 bucket'.",
+        "type": "regex"
+    },
+    {
+        "task": "Create a Python function using boto3 that takes an S3 bucket name and a file key as input, and uploads a local file at a given path to that S3 location.",
+        "type": "python"
+    },
+    {
+        "task": "Generate an IAM policy document (JSON) that grants read-only access (s3:GetObject, s3:ListBucket) to a specific S3 bucket named 'my-secure-data-bucket' and its contents, allowing access only from a specific VPC Endpoint ID 'vpce-0abcdef1234567890'.",
+        "type": "json"
+    }
+]
