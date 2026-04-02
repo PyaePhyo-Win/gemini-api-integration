@@ -1,22 +1,22 @@
 [
     {
-        "task": "Write a Python Lambda handler function that stops an EC2 instance specified by an instance ID passed in the event payload. The instance ID should be extracted from the 'instance_id' key in the event.",
+        "task": "Write a Python function using boto3 to retrieve the current state (e.g., 'running', 'stopped') of a given EC2 instance ID.",
         "type": "python"
     },
     {
-        "task": "Generate a CloudFormation JSON resource definition for an S3 bucket named 'my-application-logs' that has public access blocked for all settings (BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, RestrictPublicBuckets).",
+        "task": "Define an IAM policy document that grants read-only access to all objects within a specific S3 bucket, allowing `s3:GetObject` and `s3:ListBucket` actions.",
         "type": "json"
     },
     {
-        "task": "Provide a regular expression to extract the AWS Account ID (a 12-digit number) from a string like 'arn:aws:iam::123456789012:user/example-user' or 'Account 123456789012 accessed S3 bucket'.",
+        "task": "Extract the `Request ID` (e.g., `5443F93406C37BA8`) from an S3 error message such as 'Access Denied (Request ID: 5443F93406C37BA8)'.",
         "type": "regex"
     },
     {
-        "task": "Create a Python function using boto3 that takes an S3 bucket name and a file key as input, and uploads a local file at a given path to that S3 location.",
+        "task": "Write a Python function using boto3 to publish a message to an SNS topic, given the topic ARN and the message body string.",
         "type": "python"
     },
     {
-        "task": "Generate an IAM policy document (JSON) that grants read-only access (s3:GetObject, s3:ListBucket) to a specific S3 bucket named 'my-secure-data-bucket' and its contents, allowing access only from a specific VPC Endpoint ID 'vpce-0abcdef1234567890'.",
+        "task": "Generate a CloudFormation resource definition for an AWS Lambda function, specifying its `Runtime`, `Handler`, and `Code` S3 bucket/key properties.",
         "type": "json"
     }
 ]

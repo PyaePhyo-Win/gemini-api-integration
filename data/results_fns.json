@@ -1,0 +1,20 @@
+[
+  {
+    "task": "Write a Python function `get_s3_object_content(bucket_name, key)` using `boto3` that retrieves and returns the content of an S3 object as a string.",
+    "output": "import boto3\n\ndef get_s3_object_content(bucket_name, key):\n    s3 = boto3.client('s3')\n    response = s3.get_object(Bucket=bucket_name, Key=key)\n    content_body = response['Body']\n    content_string = content_body.read().decode('utf-8')\n    return content_string",
+    "score": 6.75,
+    "reasoning": "The solution effectively accomplishes the core task of retrieving S3 object content and decoding it into a string. The use of `boto3.client('s3')` and `s3.get_object()` is correct, and the decoding from bytes to UTF-8 string is handled properly for the happy path. However, the lack of error handling for common S3-related exceptions is a significant weakness, making the function brittle in a production environment. Additionally, failing to use a `with` statement for the `StreamingBody` can lead to unclosed connections, impacting resource utilization and stability. While 'utf-8' is a reasonable default, hardcoding it without options for other encodings or error recovery for decoding is a minor limitation."
+  },
+  {
+    "task": "Generate an IAM policy JSON object that grants read-only access (`s3:GetObject`, `s3:ListBucket`) to a specific S3 bucket named `my-private-bucket`.",
+    "output": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"s3:GetObject\",\n        \"s3:ListBucket\"\n      ],\n      \"Resource\": [\n        \"arn:aws:s3:::my-private-bucket\",\n        \"arn:aws:s3:::my-private-bucket/*\"\n      ]\n    }\n  ]\n}",
+    "score": 7.0,
+    "reasoning": "The solution correctly identifies the necessary S3 actions (`s3:GetObject`, `s3:ListBucket`) and specifies them with an `Allow` effect. It also correctly targets the specified `my-private-bucket` using both the bucket ARN (`arn:aws:s3:::my-private-bucket`) and the object ARN (`arn:aws:s3:::my-private-bucket/*`). This ensures that `s3:ListBucket` has the necessary bucket-level resource and `s3:GetObject` has the necessary object-level resource to operate on, effectively granting the requested read-only access. Although functionally correct, combining both action types and resource scopes into a single statement is less granular than separating them, which is a minor deviation from strict least privilege best practices for clarity and precision."
+  },
+  {
+    "task": "Provide a regular expression that validates an AWS EC2 instance ID, which typically starts with `i-` followed by 8 or 17 hexadecimal characters.",
+    "output": "^i-[0-9a-fA-F]{8}([0-9a-fA-F]{9})?$",
+    "score": 7.5,
+    "reasoning": "The provided regular expression `^i-[0-9a-fA-F]{8}([0-9a-fA-F]{9})?$` is an excellent solution for validating AWS EC2 instance IDs. It correctly starts with `i-`, followed by exactly 8 hexadecimal characters, and then optionally by another 9 hexadecimal characters, covering both the historical 8-character suffix and the newer 17-character suffix. The use of start (`^`) and end (`$`) anchors ensures that the entire string conforms to the pattern, which is crucial for robust validation."
+  }
+]

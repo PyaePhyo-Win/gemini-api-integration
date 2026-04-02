@@ -1,0 +1,17 @@
+[
+  {
+    "task": "Create an S3 bucket named 'my-unique-test-bucket-12345' (replace 12345 with a unique identifier) in the 'us-east-1' region. The bucket must have S3 Object Versioning enabled, Block All Public Access enabled, and Default Encryption (SSE-S3) configured.",
+    "format": "AWS CLI commands or CloudFormation YAML.",
+    "solution_criteria": "The reviewer should verify: 1. A bucket named 'my-unique-test-bucket-XXXXX' (where XXXXX is the unique identifier) exists in 'us-east-1'. 2. Object Versioning is enabled on the bucket. 3. 'Block All Public Access' settings are enabled for the bucket (BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, RestrictPublicBuckets are all true). 4. Default Encryption with SSE-S3 is configured for the bucket."
+  },
+  {
+    "task": "Launch an EC2 t2.micro instance using the latest Amazon Linux 2 AMI in 'us-east-1'. Create a new security group allowing SSH access (port 22) only from your current public IP address. Associate this security group with the EC2 instance.",
+    "format": "AWS CLI commands or CloudFormation YAML.",
+    "solution_criteria": "The reviewer should verify: 1. An EC2 instance of type 't2.micro' is running in 'us-east-1'. 2. The instance is launched with a recent Amazon Linux 2 AMI. 3. A security group is attached to the instance. 4. The attached security group has an ingress rule for TCP port 22 (SSH) with the source IP set to the reviewer's current public IP address. 5. No other unnecessary ingress rules are present in the security group."
+  },
+  {
+    "task": "Create a Python 3.9 Lambda function named 'MyHelloLambda' that returns the string 'Hello from Lambda!' when invoked. Create an API Gateway HTTP API that acts as a proxy for this Lambda function, accessible via an HTTP GET method at the root path '/'. The API Gateway endpoint should be publicly accessible.",
+    "format": "AWS CLI commands and Python code, or CloudFormation YAML.",
+    "solution_criteria": "The reviewer should verify: 1. A Lambda function named 'MyHelloLambda' exists with Python 3.9 runtime. 2. The Lambda function's code, when invoked, returns 'Hello from Lambda!'. 3. An API Gateway HTTP API is created. 4. The API Gateway has an integration with the 'MyHelloLambda' function. 5. A GET method at the root path '/' is configured to trigger the Lambda. 6. The API Gateway endpoint is publicly accessible. 7. Invoking the API Gateway GET endpoint successfully returns 'Hello from Lambda!'."
+  }
+]
