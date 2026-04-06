@@ -1,79 +1,149 @@
-# 🤖 Gemini API Learning Project
+# Gemini API Learning Project
 
-This project contains a series of Jupyter notebooks designed to explore the capabilities of the Google Gemini API, from basic requests to advanced features like structured outputs and automated prompt evaluation.
+This repository contains a set of Jupyter notebooks for learning the Google Gemini API, structured outputs, prompt evaluation workflows, and prompt engineering patterns.
 
-## 📂 Project Structure
+The project is organized around three themes:
+
+- Accessing the Gemini API with the Google GenAI SDK
+- Building prompt evaluation pipelines that generate and grade datasets
+- Improving prompt quality with more explicit structure and evaluation loops
+
+## Project Layout
 
 ```text
 .
-├── assets/                 # Images and other static files
-│   └── mushroom.jpg
-├── data/                   # Generated datasets and evaluation results
-│   ├── eval_dataset.json
-│   ├── dataset_fns.json
-│   ├── results_fns.json
+├── assets/
+├── data/
 │   ├── dataset_complete.json
-│   └── results_complete.json
-├── notebooks/              # All exercise and tutorial notebooks
-│   ├── accessing_gemini_api/ # Core API features
-│   │   ├── make_request.ipynb
-│   │   ├── chat_session.ipynb
+│   ├── dataset_fns.json
+│   ├── dataset_gemini.json
+│   ├── dataset_improved.json
+│   ├── eval_dataset.json
+│   ├── results_complete.json
+│   └── results_fns.json
+├── notebooks/
+│   ├── accessing_gemini_api/
 │   │   ├── chat_exercise.ipynb
-│   │   ├── system_prompt.ipynb
-│   │   ├── temperature.ipynb
+│   │   ├── chat_session.ipynb
+│   │   ├── make_request.ipynb
 │   │   ├── response_streaming.ipynb
-│   │   └── structured_data.ipynb
-│   └── prompt_evaluation/  # Automated evaluation workflows
-│       ├── prompt_evals.ipynb          # Simple dataset generation
-│       ├── prompt_evals_fns.ipynb      # End-to-end evaluation pipeline
-│       └── prompt_evals_complete.ipynb # Criterion-based expert evaluation
-├── .env                    # (Local only) API keys and secrets
-├── .gitignore              # Files excluded from version control
-├── requirements.txt        # Python dependencies
-└── README.md               # Project documentation
+│   │   ├── structured_data.ipynb
+│   │   ├── system_prompt.ipynb
+│   │   └── temperature.ipynb
+│   ├── prompt_engineering/
+│   │   ├── prompting.ipynb
+│   │   └── prompting_improved.ipynb
+│   └── prompt_evaluation/
+│       ├── prompt_evals.ipynb
+│       ├── prompt_evals_complete.ipynb
+│       └── prompt_evals_fns.ipynb
+├── reports/
+│   ├── improved_report.html
+│   └── prompt_eval_report.html
+├── utils/
+│   ├── __init__.py
+│   └── gemini_retry.py
+├── requirements.txt
+└── README.md
 ```
 
-## 🚀 Getting Started
+## Setup
 
-1.  **Environment Setup**:
-    Ensure you have Python installed and create a virtual environment:
-    ```bash
-    python -m venv .venv
-    source .venv/bin/activate
-    ```
+1. Create and activate a virtual environment.
 
-2.  **Install Dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
 
-3.  **API Key Configuration**:
-    Create a `.env` file in the root directory and add your Google AI Studio API key:
-    ```text
-    GOOGLE_API_KEY=your_api_key_here
-    ```
+2. Install dependencies.
 
-## 📓 Notebook Descriptions
+```bash
+pip install -r requirements.txt
+```
 
-### 🔗 Accessing Gemini API
-- **`make_request.ipynb`**: Your first steps. Learn how to initialize the client, send a prompt, and include an image.
-- **`chat_session.ipynb`**: Understand how the `chats.create()` API maintains conversation state automatically.
-- **`chat_exercise.ipynb`**: A practical exercise using Python's `input()` to build a real-time terminal-style chat.
-- **`system_prompt.ipynb`**: Learn how to use `system_instruction` to give the model a specific persona.
-- **`temperature.ipynb`**: Experiment with the `temperature` parameter to control response "creativity".
-- **`response_streaming.ipynb`**: Learn how to process long responses in real-time as they are generated.
-- **`structured_data.ipynb`**: Learn how to use Gemini's Controlled Generation (Structured Outputs) with Pydantic.
+3. Create a root `.env` file with your Gemini API key.
 
-### 📊 Prompt Evaluation
-- **`prompt_evals.ipynb`**: Generates an initial evaluation dataset of AWS-related coding tasks.
-- **`prompt_evals_fns.ipynb`**: Implements a full pipeline: generates tasks, executes them, and performs dual grading (syntax validation + Gemini model review).
-- **`prompt_evals_complete.ipynb`**: The most advanced version. It generates task-specific criteria (rubrics) during dataset creation and uses them to perform expert-level, criterion-based evaluations.
+```text
+GOOGLE_API_KEY=your_api_key_here
+```
 
-## 📚 Learning Resources
+4. Open the notebooks in VS Code or Jupyter and run cells from top to bottom.
 
-This project was inspired by and built alongside the following learning materials:
+## Dependencies
 
-*   **Anthropic Skilljar Course**: [Building with the Claude API](https://anthropic.skilljar.com/claude-with-the-anthropic-api) - Adapted and migrated to use the Google Gemini SDK for learning purposes.
+The project currently depends on:
 
-## 🛡️ Security
-This project uses a `.gitignore` to ensure your `.env` file and `.venv` folders are never committed to source control. Always keep your API keys private.
+- `google-genai`
+- `tenacity`
+- `python-dotenv`
+- `pillow`
+- `ipython`
+
+## Notebook Guide
+
+### Accessing Gemini API
+
+- `make_request.ipynb`: Basic text and image requests, plus token usage display.
+- `chat_session.ipynb`: Multi-turn chat sessions with Gemini.
+- `chat_exercise.ipynb`: A simple interactive chat exercise.
+- `system_prompt.ipynb`: Use of `system_instruction` for role and behavior control.
+- `temperature.ipynb`: Single-turn and chat examples with different temperature settings.
+- `response_streaming.ipynb`: Streaming model responses.
+- `structured_data.ipynb`: JSON mode and schema-based structured output with Pydantic.
+
+### Prompt Engineering
+
+- `prompting.ipynb`: Baseline prompt engineering and evaluation flow for athlete meal-plan generation.
+- `prompting_improved.ipynb`: Improved version of the same workflow with more structured prompting and schema-based grading.
+
+### Prompt Evaluation
+
+- `prompt_evals.ipynb`: Generates an AWS-focused evaluation dataset with a simple chat wrapper.
+- `prompt_evals_fns.ipynb`: Builds a full evaluation pipeline with syntax checks and model grading.
+- `prompt_evals_complete.ipynb`: Extends the evaluation pipeline with generated grading criteria for each task.
+
+## Retry and Rate Limits
+
+Several notebooks now use a shared retry helper in `utils/gemini_retry.py`.
+
+That helper:
+
+- wraps `client.models.generate_content(...)`
+- retries on `429`, `RESOURCE_EXHAUSTED`, and related quota-style failures
+- uses exponential backoff through `tenacity`
+- re-raises non-rate-limit errors immediately
+
+If you still hit quota or rate-limit failures during dataset generation or evaluation, reduce notebook concurrency first. In the evaluator notebooks, the safest follow-up change is usually lowering `max_concurrent_tasks` to `1`.
+
+## Generated Outputs
+
+The repository already contains generated artifacts under `data/` and `reports/`.
+
+- `data/` contains datasets and evaluation results produced by the notebooks.
+- `reports/` contains generated HTML evaluation reports.
+
+These files can be regenerated by rerunning the corresponding notebooks.
+
+## Suggested Run Order
+
+If you are working through the project end to end, this order is the most coherent:
+
+1. Start with `notebooks/accessing_gemini_api/`
+2. Move to `notebooks/prompt_evaluation/`
+3. Finish with `notebooks/prompt_engineering/prompting.ipynb`
+4. Then run `notebooks/prompt_engineering/prompting_improved.ipynb`
+
+## Notes
+
+- The notebooks expect the project root to contain `.env` and `requirements.txt`.
+- Some notebooks import shared utilities by locating the project root dynamically.
+- Generated notebook outputs may differ depending on your current Gemini model access, quota, and network state.
+
+## Attribution
+
+This project was adapted from course material originally centered on Anthropic API workflows and rewritten here for learning with the Google Gemini SDK.
+
+## Security
+
+Do not commit your `.env` file or API keys. Keep secrets local and private.
