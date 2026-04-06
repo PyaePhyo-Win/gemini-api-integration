@@ -1,0 +1,79 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; color: #333; max-width: 1200px; margin: 0 auto; }
+            .header { background-color: #f8f9fa; padding: 30px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #e1e4e8; }
+            .summary-stats { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+            .stat-box { background-color: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); flex: 1; min-width: 200px; border: 1px solid #eee; }
+            .stat-value { font-size: 28px; font-weight: bold; margin-top: 10px; color: #1a73e8; }
+            table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+            th { background-color: #3c4043; color: white; text-align: left; padding: 15px; font-weight: 500; }
+            td { padding: 15px; border-bottom: 1px solid #eee; vertical-align: top; }
+            tr:hover { background-color: #fcfcfc; }
+            .score { font-weight: bold; padding: 6px 12px; border-radius: 20px; display: inline-block; font-size: 14px; }
+            .score-high { background-color: #e6f4ea; color: #137333; }
+            .score-medium { background-color: #fef7e0; color: #b06000; }
+            .score-low { background-color: #fce8e6; color: #c5221f; }
+            .output pre { background-color: #f8f9fa; padding: 12px; border-radius: 6px; border: 1px solid #e1e4e8; font-family: 'Roboto Mono', monospace; font-size: 13px; white-space: pre-wrap; margin: 0; }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box"><div>Total Test Cases</div><div class="stat-value">3</div></div>
+                <div class="stat-box"><div>Average Score</div><div class="stat-value">1.0 / 10</div></div>
+                <div class="stat-box"><div>Pass Rate (≥7)</div><div class="stat-value">0.0%</div></div>
+            </div>
+        </div>
+        <table>
+            <thead><tr><th>Scenario</th><th>Inputs</th><th>Criteria</th><th>Output</th><th>Score</th><th>Reasoning</th></tr></thead>
+            <tbody>
+    
+            <tr>
+                <td>Test with an athlete requiring a very specific, high-performance diet (e.g., marathon runner) combined with multiple, strict dietary restrictions (e.g., vegan, gluten-free, nut allergy) to ensure nutritional adequacy and adherence.</td>
+                <td><b>height:</b> 175 cm<br><b>weight:</b> 65 kg<br><b>goal:</b> High-performance fuel for marathon training day (long run scheduled)<br><b>restrictions:</b> ['vegan', 'gluten-free', 'nut allergy']</td>
+                <td><ul><li>Meal plan must be strictly vegan, gluten-free, and entirely free of all nuts (including peanuts).</li><li>Total estimated caloric intake must be adequate for a high-performance athlete on a marathon training day (e.g., 2800-3500 kcal, depending on intensity/duration).</li><li>Macronutrient distribution should support athletic performance (e.g., high carbohydrates for sustained energy, adequate protein for recovery, healthy fats).</li><li>Plan must provide 3 main meals and 1-2 snacks, clearly outlining food items and suggested portion sizes for a single day.</li></ul></td>
+                <td class='output'><pre>Here is a one-day vegan, gluten-free, and nut-allergy-safe meal plan designed to fuel a 175 cm, 65 kg athlete for a marathon training long run day. This plan prioritizes high carbohydrates for sustained energy, adequate protein for recovery, and healthy fats, while adhering strictly to all dietary restrictions.
+
+---
+
+### **Athlete Profile & Goal:**</pre></td>
+                <td><span class='score score-low'>1</span></td>
+                <td>The AI output provided for grading is fundamentally incomplete. It only includes an introductory sentence and then lists the *criteria* that were given to the AI, rather than the actual meal plan it was tasked to generate. Without the meal plan itself, it is impossible to evaluate its adherence to any of the specified requirements, including dietary restrictions, caloric intake, macronutrient distribution, meal structure, or protein content. The core task was not fulfilled.</td>
+            </tr>
+        
+            <tr>
+                <td>Evaluate a common use case with an average height/weight athlete (e.g., 175cm, 70kg) aiming for general fitness and weight maintenance with no dietary restrictions, expecting a balanced, easily achievable meal plan.</td>
+                <td><b>height:</b> 175cm<br><b>weight:</b> 70kg<br><b>goal:</b> general fitness and weight maintenance<br><b>restrictions:</b> None</td>
+                <td><ul><li>The meal plan must clearly define at least 3 main meals (Breakfast, Lunch, Dinner) and may include 1-2 snacks for a single day.</li><li>Meals should primarily consist of common, readily available ingredients and simple preparation methods suitable for an average home cook.</li><li>Each main meal should qualitatively demonstrate a balance of macronutrients (e.g., protein source, complex carbohydrate, healthy fat) appropriate for an athlete's general fitness and maintenance goals.</li><li>The entire 1-day meal plan should be presented in a concise and compact format, without excessive descriptive text.</li></ul></td>
+                <td class='output'><pre>Here's a one-day meal plan tailored for an athlete of your profile (175cm, 70kg, general fitness, weight maintenance), focusing on balanced nutrition, consistent energy, and good recovery.
+
+---
+
+**Athlete Profile:**
+*   **Height:** 175cm
+*   **Weight:** 70kg
+*   **Goal:** General fitness,</pre></td>
+                <td><span class='score score-low'>1</span></td>
+                <td>The AI output failed to deliver the core requirement of the task: a 1-day meal plan. It only provided an introductory sentence and reiterated the athlete's profile before abruptly cutting off. As a result, none of the specified criteria for evaluating the meal plan's content could be assessed, rendering the output entirely unhelpful for the user's request.</td>
+            </tr>
+        
+            <tr>
+                <td>Challenge the prompt with an extreme body composition goal (e.g., significant weight cut for a competition or rapid muscle gain) for a large athlete (e.g., 190cm, 110kg) with a single, common restriction like 'no red meat' or 'dairy-free', to check for appropriate calorie and macronutrient adjustments.</td>
+                <td><b>height:</b> 190cm<br><b>weight:</b> 110kg<br><b>goal:</b> Rapid weight cut for a competition (approx. 1-1.5kg/week loss)<br><b>restrictions:</b> no red meat</td>
+                <td><ul><li>The total caloric intake for the day must reflect a significant deficit appropriate for rapid weight loss for a 190cm, 110kg athlete (e.g., 2000-2500 kcal).</li><li>The meal plan must prioritize high protein intake (e.g., >180g) to support muscle preservation during rapid weight loss.</li><li>No red meat (beef, pork, lamb, venison, etc.) should be included in any meal.</li><li>The plan should provide a balanced intake of macronutrients (excluding the specific restriction and goal-driven adjustments) and micronutrients from acceptable sources, presented concisely as a 1-day plan.</li></ul></td>
+                <td class='output'><pre>Here is a one-day meal plan tailored for an athlete of your specifications (190cm, 110kg) aiming for a rapid weight cut of 1-1.5kg per week, with no red meat. This plan is aggressive but designed to maintain muscle mass while creating a significant caloric deficit.
+
+**Important Considerations for a Rapid Weight Cut:**
+
+*   **Hyd</pre></td>
+                <td><span class='score score-low'>1</span></td>
+                <td>The AI output is severely incomplete, cutting off before any actual meal plan is provided. As such, it fails to address the core task of writing a 1-day meal plan. Consequently, none of the specific criteria regarding caloric intake, protein content, adherence to restrictions, or overall balance and conciseness can be evaluated. The introductory text is appropriate, but it does not constitute the requested output.</td>
+            </tr>
+        </tbody></table></body></html>

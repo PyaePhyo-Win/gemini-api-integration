@@ -1,0 +1,38 @@
+[
+  {
+    "prompt_inputs": {
+      "height": "175cm",
+      "weight": "65kg",
+      "goal": "carb-loading for endurance",
+      "restrictions": "none"
+    },
+    "solution_criteria": [
+      "Meal plan must include at least three main meals and two snacks.",
+      "Plan must reflect a high carbohydrate intake appropriate for carb-loading, specifically targeting 7-10g of carbohydrates per kg of body weight (approx. 455g-650g).",
+      "Daily caloric and macronutrient totals (Carbs, Protein, Fat) must be clearly stated.",
+      "Includes diverse food groups such as complex carbohydrates, lean proteins, and simple sugars for glycogen replenishment.",
+      "The tone must be professional and provide meal timing suggestions relative to training.",
+      "The output must be formatted as a structured 1-day meal plan."
+    ],
+    "task_description": "Write a professional, macro-balanced 1 day meal plan for an athlete",
+    "scenario": "Test a 'Happy Path' scenario featuring a standard-sized marathon runner (175cm, 65kg) with a goal of 'carb-loading for endurance' and no dietary restrictions to verify basic macronutrient distribution accuracy and meal variety."
+  },
+  {
+    "prompt_inputs": {
+      "height": "195cm",
+      "weight": "140kg",
+      "goal": "Fat loss while maintaining maximum strength for powerlifting competition.",
+      "restrictions": "Strict Vegan, Gluten-free, Soy-free, Nut-free (no peanuts or tree nuts)."
+    },
+    "solution_criteria": [
+      "Must provide a complete 1-day meal plan including breakfast, lunch, dinner, and at least two snacks.",
+      "Must strictly adhere to all dietary restrictions: Vegan, Gluten-free, Soy-free, and Nut-free.",
+      "Must identify and use high-protein plant-based sources that are not soy or nut based, such as hemp seeds, pumpkin seeds, pea protein, lentils, and chickpeas.",
+      "Must include estimated macronutrient targets (Protein, Carbs, Fats) and total calories appropriate for a 140kg athlete in a caloric deficit.",
+      "Must avoid common vegan protein fallbacks like seitan (gluten), tofu/tempeh (soy), or almond/peanut butters (nuts).",
+      "The meal plan must be professional and balanced, including micronutrient considerations like leafy greens and fiber."
+    ],
+    "task_description": "Write a professional, macro-balanced 1 day meal plan for an athlete",
+    "scenario": "Test an 'Extreme Edge Case' involving a heavy-weight powerlifter (195cm, 140kg) with a 'fat loss while maintaining strength' goal, but with highly restrictive 'Vegan, Gluten-free, Soy-free, and Nut-free' constraints to evaluate the model's ability to find viable high-protein sources under severe limitations."
+  }
+]

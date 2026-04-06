@@ -1,4 +1,5 @@
 google-genai
+tenacity
 python-dotenv
 pillow
 ipython

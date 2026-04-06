@@ -1,0 +1,81 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; color: #333; max-width: 1200px; margin: 0 auto; }
+            .header { background-color: #f8f9fa; padding: 30px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #e1e4e8; }
+            .summary-stats { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+            .stat-box { background-color: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); flex: 1; min-width: 200px; border: 1px solid #eee; }
+            .stat-value { font-size: 28px; font-weight: bold; margin-top: 10px; color: #1a73e8; }
+            table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+            th { background-color: #3c4043; color: white; text-align: left; padding: 15px; font-weight: 500; }
+            td { padding: 15px; border-bottom: 1px solid #eee; vertical-align: top; }
+            tr:hover { background-color: #fcfcfc; }
+            .score { font-weight: bold; padding: 6px 12px; border-radius: 20px; display: inline-block; font-size: 14px; }
+            .score-high { background-color: #e6f4ea; color: #137333; }
+            .score-medium { background-color: #fef7e0; color: #b06000; }
+            .score-low { background-color: #fce8e6; color: #c5221f; }
+            .output pre { background-color: #f8f9fa; padding: 12px; border-radius: 6px; border: 1px solid #e1e4e8; font-family: 'Roboto Mono', monospace; font-size: 13px; white-space: pre-wrap; margin: 0; }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box"><div>Total Test Cases</div><div class="stat-value">2</div></div>
+                <div class="stat-box"><div>Average Score</div><div class="stat-value">2.0 / 10</div></div>
+                <div class="stat-box"><div>Pass Rate (≥7)</div><div class="stat-value">0.0%</div></div>
+            </div>
+        </div>
+        <table>
+            <thead><tr><th>Scenario</th><th>Inputs</th><th>Criteria</th><th>Output</th><th>Score</th><th>Reasoning</th></tr></thead>
+            <tbody>
+    
+            <tr>
+                <td>Test a 'Happy Path' scenario featuring a standard-sized marathon runner (175cm, 65kg) with a goal of 'carb-loading for endurance' and no dietary restrictions to verify basic macronutrient distribution accuracy and meal variety.</td>
+                <td><b>height:</b> 175cm<br><b>weight:</b> 65kg<br><b>goal:</b> carb-loading for endurance<br><b>restrictions:</b> none</td>
+                <td><ul><li>Meal plan must include at least three main meals and two snacks.</li><li>Plan must reflect a high carbohydrate intake appropriate for carb-loading, specifically targeting 7-10g of carbohydrates per kg of body weight (approx. 455g-650g).</li><li>Daily caloric and macronutrient totals (Carbs, Protein, Fat) must be clearly stated.</li><li>Includes diverse food groups such as complex carbohydrates, lean proteins, and simple sugars for glycogen replenishment.</li><li>The tone must be professional and provide meal timing suggestions relative to training.</li><li>The output must be formatted as a structured 1-day meal plan.</li></ul></td>
+                <td class='output'><pre><calories>3550 kcal</calories>
+
+<macros>
+Protein: 105g
+Fat: 48g
+Carbohydrates: 675g
+</macros>
+
+<schedule>
+07:00 - Breakfast
+- 120g Rolled oats (dry weight) cooked with water
+- 120g Banana (1 large)
+- 30g Honey
+- 250ml Orange juice
+
+10:00 - Mid-Morning Snack
+- 18</pre></td>
+                <td><span class='score score-low'>2</span></td>
+                <td>The response is incomplete and cuts off mid-sentence during the first snack entry. As a result, it fails to meet almost all the content requirements, including providing three main meals and two snacks, a full 1-day meal plan, and meal timing relative to training. While the initial macronutrient calculations were appropriate for the user's weight and goal (targeting approximately 10g/kg of carbohydrates), the lack of content makes the response unusable.</td>
+            </tr>
+        
+            <tr>
+                <td>Test an 'Extreme Edge Case' involving a heavy-weight powerlifter (195cm, 140kg) with a 'fat loss while maintaining strength' goal, but with highly restrictive 'Vegan, Gluten-free, Soy-free, and Nut-free' constraints to evaluate the model's ability to find viable high-protein sources under severe limitations.</td>
+                <td><b>height:</b> 195cm<br><b>weight:</b> 140kg<br><b>goal:</b> Fat loss while maintaining maximum strength for powerlifting competition.<br><b>restrictions:</b> Strict Vegan, Gluten-free, Soy-free, Nut-free (no peanuts or tree nuts).</td>
+                <td><ul><li>Must provide a complete 1-day meal plan including breakfast, lunch, dinner, and at least two snacks.</li><li>Must strictly adhere to all dietary restrictions: Vegan, Gluten-free, Soy-free, and Nut-free.</li><li>Must identify and use high-protein plant-based sources that are not soy or nut based, such as hemp seeds, pumpkin seeds, pea protein, lentils, and chickpeas.</li><li>Must include estimated macronutrient targets (Protein, Carbs, Fats) and total calories appropriate for a 140kg athlete in a caloric deficit.</li><li>Must avoid common vegan protein fallbacks like seitan (gluten), tofu/tempeh (soy), or almond/peanut butters (nuts).</li><li>The meal plan must be professional and balanced, including micronutrient considerations like leafy greens and fiber.</li></ul></td>
+                <td class='output'><pre><calories>3,050 kcal</calories>
+
+<macros>
+Protein: 212g
+Carbohydrates: 338g
+Fat: 94g
+</macros>
+
+<schedule>
+07:30 - Breakfast: High-Protein Power Porridge
+- 100g Certified Gluten-Free Rolled Oats</pre></td>
+                <td><span class='score score-low'>2</span></td>
+                <td>The response is severely incomplete. While it correctly identifies the calorie and macronutrient targets for a 140kg athlete and begins to use the requested XML-style formatting, it cuts off after the very first ingredient of the first meal. It fails to provide a complete 1-day meal plan, missing lunch, dinner, and the two required snacks. Consequently, it also fails to demonstrate adherence to the complex dietary restrictions across a full day of eating.</td>
+            </tr>
+        </tbody></table></body></html>
