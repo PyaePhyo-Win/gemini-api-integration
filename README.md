@@ -38,7 +38,10 @@ The project is organized around three themes:
 │   │   ├── prompt_evals_complete.ipynb
 │   │   └── prompt_evals_fns.ipynb
 │   └── tool_use_with_gemini/
-│       └── tool_functions.ipynb
+│       ├── text_editor_tool.ipynb
+│       ├── tool_functions.ipynb
+│       └── tool_streaming.ipynb
+├── playground/
 ├── reports/
 │   ├── improved_report.html
 │   └── prompt_eval_report.html
@@ -108,6 +111,12 @@ The project currently depends on:
 ### Tool Use with Gemini
 
 - `tool_functions.ipynb`: Demonstrates how to define Python functions as tools, including automatic tool schema generation and model-driven tool calling with Gemini.
+- `tool_streaming.ipynb`: Shows how to handle tool calls in a streaming response loop.
+- `text_editor_tool.ipynb`: A complex tool example implementing a filesystem editor with create, view, replace, and undo capabilities. Includes an interactive multi-turn chat mode.
+
+## Playground for Tools
+
+The project root includes a `playground/` directory. This is a safe, isolated area designed for testing tools (like the `TextEditorTool`) that interact with the filesystem. Files created by tools during experimentation will be saved here.
 
 ## Retry and Rate Limits
 
