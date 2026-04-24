@@ -40,7 +40,8 @@ The project is organized around three themes:
 │   └── tool_use_with_gemini/
 │       ├── text_editor_tool.ipynb
 │       ├── tool_functions.ipynb
-│       └── tool_streaming.ipynb
+│       ├── tool_streaming.ipynb
+│       └── web_search_tool.ipynb
 ├── playground/
 ├── reports/
 │   ├── improved_report.html
@@ -112,6 +113,7 @@ The project currently depends on:
 
 - `tool_functions.ipynb`: Demonstrates how to define Python functions as tools, including automatic tool schema generation and model-driven tool calling with Gemini.
 - `tool_streaming.ipynb`: Shows how to handle tool calls in a streaming response loop.
+- `web_search_tool.ipynb`: Demonstrates Gemini's built-in Google Search grounding tool for retrieving real-time information from the web.
 - `text_editor_tool.ipynb`: A complex tool example implementing a filesystem editor with create, view, replace, and undo capabilities. Includes an interactive multi-turn chat mode.
 
 ## Playground for Tools
