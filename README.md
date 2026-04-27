@@ -14,6 +14,7 @@ The project is organized around three themes:
 .
 ├── assets/
 ├── data/
+│   ├── chunking.md
 │   ├── dataset_complete.json
 │   ├── dataset_fns.json
 │   ├── dataset_gemini.json
@@ -37,6 +38,8 @@ The project is organized around three themes:
 │   │   ├── prompt_evals.ipynb
 │   │   ├── prompt_evals_complete.ipynb
 │   │   └── prompt_evals_fns.ipynb
+│   ├── rag_and_agentic_search/
+│   │   └── chunking.ipynb
 │   └── tool_use_with_gemini/
 │       ├── text_editor_tool.ipynb
 │       ├── tool_functions.ipynb
@@ -109,6 +112,10 @@ The project currently depends on:
 - `prompt_evals_fns.ipynb`: Builds a full evaluation pipeline with syntax checks and model grading.
 - `prompt_evals_complete.ipynb`: Extends the evaluation pipeline with generated grading criteria for each task.
 
+### RAG and Agentic Search
+
+- `chunking.ipynb`: Demonstrates basic text chunking strategies (by character count, by sentence, and by markdown section) using the sample document at `data/chunking.md`.
+
 ### Tool Use with Gemini
 
 - `tool_functions.ipynb`: Demonstrates how to define Python functions as tools, including automatic tool schema generation and model-driven tool calling with Gemini.
@@ -151,6 +158,7 @@ If you are working through the project end to end, this order is the most cohere
 3. Move to `notebooks/prompt_evaluation/`
 4. Finish with `notebooks/prompt_engineering/prompting.ipynb`
 5. Then run `notebooks/prompt_engineering/prompting_improved.ipynb`
+6. Optionally explore `notebooks/rag_and_agentic_search/chunking.ipynb`
 
 ## Notes
 
