@@ -1,12 +1,13 @@
 # Gemini API Learning Project
 
-This repository contains a set of Jupyter notebooks for learning the Google Gemini API, structured outputs, prompt evaluation workflows, and prompt engineering patterns.
+This repository contains a set of Jupyter notebooks for learning the Google Gemini API, structured outputs, prompt evaluation workflows, prompt engineering patterns, and retrieval-augmented generation (RAG) search techniques.
 
-The project is organized around three themes:
+The project is organized around four themes:
 
 - Accessing the Gemini API with the Google GenAI SDK
 - Building prompt evaluation pipelines that generate and grade datasets
 - Improving prompt quality with more explicit structure and evaluation loops
+- Building RAG search components with chunking, embeddings, vector search, BM25, and hybrid retrieval
 
 ## Project Layout
 
@@ -39,7 +40,11 @@ The project is organized around three themes:
 │   │   ├── prompt_evals_complete.ipynb
 │   │   └── prompt_evals_fns.ipynb
 │   ├── rag_and_agentic_search/
-│   │   └── chunking.ipynb
+│   │   ├── bm25.ipynb
+│   │   ├── chunking.ipynb
+│   │   ├── embeddings.ipynb
+│   │   ├── hybrid.ipynb
+│   │   └── vectordb.ipynb
 │   └── tool_use_with_gemini/
 │       ├── text_editor_tool.ipynb
 │       ├── tool_functions.ipynb
@@ -71,10 +76,11 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-3. Create a root `.env` file with your Gemini API key.
+3. Create a root `.env` file with the API keys needed by the notebooks you plan to run.
 
 ```text
 GOOGLE_API_KEY=your_api_key_here
+VOYAGE_API_KEY=your_voyage_api_key_here
 ```
 
 4. Open the notebooks in VS Code or Jupyter and run cells from top to bottom.
@@ -88,6 +94,7 @@ The project currently depends on:
 - `python-dotenv`
 - `pillow`
 - `ipython`
+- `voyageai`
 
 ## Notebook Guide
 
@@ -115,6 +122,10 @@ The project currently depends on:
 ### RAG and Agentic Search
 
 - `chunking.ipynb`: Demonstrates basic text chunking strategies (by character count, by sentence, and by markdown section) using the sample document at `data/chunking.md`.
+- `embeddings.ipynb`: Shows how to generate Voyage AI embeddings for section chunks.
+- `vectordb.ipynb`: Builds a small in-memory vector index and retrieves chunks by embedding similarity.
+- `bm25.ipynb`: Builds a BM25 keyword index for lexical retrieval over the same section chunks.
+- `hybrid.ipynb`: Combines BM25 and vector search with reciprocal rank fusion for hybrid retrieval.
 
 ### Tool Use with Gemini
 
@@ -158,12 +169,14 @@ If you are working through the project end to end, this order is the most cohere
 3. Move to `notebooks/prompt_evaluation/`
 4. Finish with `notebooks/prompt_engineering/prompting.ipynb`
 5. Then run `notebooks/prompt_engineering/prompting_improved.ipynb`
-6. Optionally explore `notebooks/rag_and_agentic_search/chunking.ipynb`
+6. Explore `notebooks/rag_and_agentic_search/chunking.ipynb`
+7. Continue through `notebooks/rag_and_agentic_search/embeddings.ipynb`, `vectordb.ipynb`, `bm25.ipynb`, and `hybrid.ipynb`
 
 ## Notes
 
 - The notebooks expect the project root to contain `.env` and `requirements.txt`.
 - Some notebooks import shared utilities by locating the project root dynamically.
+- The RAG notebooks that generate embeddings require a valid Voyage AI API key.
 - Generated notebook outputs may differ depending on your current Gemini model access, quota, and network state.
 
 ## Attribution

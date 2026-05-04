@@ -3,3 +3,4 @@ tenacity
 python-dotenv
 pillow
 ipython
+voyageai
